@@ -3,10 +3,10 @@ alert("Please Wait")
 const boxtimer = ms => new Promise(res => setTimeout(res, ms))
 const box1colors = ["transparent", "red", "blue", "yellow"]
 const box2colors = ["transparent", "purple", "orange", "green", "black", "red"]
-let box1 = document.getElementById('1')
-let box2 = document.getElementById('2')
-let box3 = document.getElementById('3')
-let box4 = document.getElementById('4')
+const box1 = document.getElementById('1')
+const box2 = document.getElementById('2')
+const box3 = document.getElementById('3')
+const box4 = document.getElementById('4')
 let timercheck = false
 let i = 0
 
@@ -35,25 +35,14 @@ async function changebox4color() {
 function keyDown (e) {
     let key = e.key
     if (i < box2colors.length - 1 && i >= 0) {
-        if (key == 'ArrowUp') {
+        if (key == 'ArrowUp' || key == "ArrowLeft") {
             i++
             console.log(i)
             box4.style.backgroundColor = box2colors[i]
-        } else if (key == "ArrowDown") {
+        } else if (key == "ArrowDown" || key == "ArrowRight") {
             if(i > 0){
                 i--
             }
-            console.log(i)
-            box4.style.backgroundColor = box2colors[i]
-        } else if (key == "ArrowLeft") {
-            i++
-            console.log(i)
-            box4.style.backgroundColor = box2colors[i]
-        } else if (key == "ArrowRight") {
-            if(i > 0){
-                i--
-            }
-
             console.log(i)
             box4.style.backgroundColor = box2colors[i]
         }
