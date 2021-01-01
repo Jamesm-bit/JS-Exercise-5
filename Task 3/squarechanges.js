@@ -35,11 +35,11 @@ async function changebox4color() {
 function keyDown (e) {
     let key = e.key
     if (i < box2colors.length - 1 && i >= 0) {
-        if (key == 'ArrowUp' || key == "ArrowLeft") {
+        if (key == 'ArrowUp' || key == "ArrowRight") {
             i++
             console.log(i)
             box4.style.backgroundColor = box2colors[i]
-        } else if (key == "ArrowDown" || key == "ArrowRight") {
+        } else if (key == "ArrowDown" || key == "ArrowLeft") {
             if(i > 0){
                 i--
             }

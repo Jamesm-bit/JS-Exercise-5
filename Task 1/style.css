@@ -1,0 +1,15 @@
+#uname{
+    visibility: hidden;
+}
+#pword{
+    visibility: hidden;
+}
+#utype{
+    visibility: hidden
+}
+#signinbutton {
+    visibility: visible;
+}
+#signupbutton {
+    visibility: visible;
+}
