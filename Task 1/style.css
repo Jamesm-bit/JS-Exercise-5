@@ -1,15 +1,15 @@
-#uname{
+#unamesi{
     visibility: hidden;
 }
-#pword{
+#pwordsi{
     visibility: hidden;
-}
-#utype{
-    visibility: hidden
 }
 #signinbutton {
     visibility: visible;
 }
 #signupbutton {
     visibility: visible;
+}
+#logoutbutton {
+    visibility: hidden;
 }

@@ -13,15 +13,12 @@
     <nav class="sticky-top">
         <h1>Rapid Ops</h1>
         <div>
-            <input type="text" placeholder="User Name" id="uname" class="hidden">
-            <input type="text" placeholder="Password" id="pword" class="hidden">
-            <input type="text" placeholder="type of user" id="utype" class="hidden">
-            <button class="signin" id="signinbutton">Sign in</button>
-            <button class="signup" id="signupbutton">Sign up</button>
-            <div>
-                <p id="user"></p>
-            </div>
-            
+            <input type="text" placeholder="User Name" id="unamesi" class="hidden">
+            <input type="password" placeholder="Password" id="pwordsi" class="hidden">
+            <button class="signin" id="signinbutton" onclick="signin()">Sign in</button>
+            <button class="signup" id="signupbutton" onclick="changewindow()">Sign up</button>
+            <p id="user"></p>
+            <button class="logout" id="logoutbutton" onclick="logout()">Logout</button>      
         </div>
     </nav>
     <div id="courseholder">
