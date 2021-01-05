@@ -1,3 +1,19 @@
+body {
+    font: 400 20px "Times New Roman";
+}
+
+button{
+    background-color: transparent;
+    margin: 5px;
+    color: black;
+    border-color: black;
+}
+
+#user{
+    height: 20px;
+    margin: 5px;
+}
+
 #unamesi{
     visibility: hidden;
 }
@@ -12,4 +28,87 @@
 }
 #logoutbutton {
     visibility: hidden;
+}
+.navbar {
+    display:flex;
+    justify-content: space-around;
+    background-color: lightblue;
+    height: 100px
+}
+.companyname {
+    position: relative;
+    height: 40px;
+    top: 32.5px;
+    margin: 0px;
+}
+.navdiv{
+    position: relative;
+    display: flex;
+    justify-content: left;
+    height: 30px;
+    top: 37.5px;
+}
+#div21 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    height: 250px;
+    width: 250px;
+    border: solid;
+    border-width: 5px;
+    border-color: black;
+    background-color: lightblue;
+    border-radius: 30px;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    margin-left: -130px;
+    margin-bottom: -130px;
+    align-items: center;
+}
+#sudiv {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    height: 330px;
+    width: 250px;
+    border: solid;
+    border-width: 5px;
+    border-color: black;
+    background-color: lightblue;
+    border-radius: 30px;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    margin-left: -130px;
+    margin-bottom: -130px;
+    align-items: center;
+}
+.signupelement {
+    background-color: transparent;
+    color: black;
+}
+.sutext {
+    border-color: white;
+    border-radius: 10px;
+}
+.suradio{
+    margin: 0px;
+}
+.userdiv {
+    background-color: lightblue;
+    width: 200px;
+    border: solid;
+    border-width: 5px;
+    border-color: black;
+    margin: 20px;
+    padding-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#userpage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

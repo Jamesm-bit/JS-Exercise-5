@@ -11,10 +11,12 @@
 </head>
 
 <body onLoad="iterateoveruser()">
-    <nav>
+    <nav class="sticky-top navbar">
         <h1>Rapid Ops</h1>
-        <p id="user"></p>
-        <button class="logoutadmin" id="logoutbuttonadmin" onclick="resetlogout()">Logout</button>
+        <div class="navdiv">
+            <p id="user"></p>
+            <button class="logoutadmin" id="logoutbuttonadmin" onclick="resetlogout()">Logout</button>
+        </div>
     </nav>
     <div id="userpage">
 

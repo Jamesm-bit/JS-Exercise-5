@@ -1,8 +1,9 @@
-let users = []
+let users = JSON.parse(localStorage.getItem("users"))
 let courses = ['Javascript', 'CSS', 'HTML']
 let unamein
 let pwordin
 let utypein
+let pwordconfirm
 const signinbutton = document.getElementById('signinbutton')
 const signupbutton = document.getElementById('signupbutton')
 const logoutbutton = document.getElementById('logoutbutton')
@@ -12,7 +13,13 @@ let curruser
 let currpass
 let currtype
 
+console.log(users)
+
 function resetlogout() {
+    localStorage.setItem("users", JSON.stringify(users))
+    window.location.href = "index.html"
+}
+function returntomain() {
     localStorage.setItem("users", JSON.stringify(users))
     window.location.href = "index.html"
 }
@@ -20,97 +27,82 @@ function resetlogout() {
 function iterateoveruser() {
     let unameadmin = localStorage.getItem("curruser")
     let unameadim = document.getElementById('user')
-    unameadmin.innerHTML = unameadmin
+    unameadim.innerHTML = unameadmin
     users = JSON.parse(localStorage.getItem("users"))
     for (let k = 0; k < users.length; k++) { displaynames(k, users[k]) }
 }
 
-function removeassignjava(i) {
-    users[i].javavis = false
-    console.log(users)
+function javavis(i, button) {
+    if (users[i].javavis) {
+        button.innerHTML = "Add"
+        users[i].javavis = false
+    } else {
+        button.innerHTML = "Remove"
+        users[i].javavis = true
+    }
 }
-function addassignjava(i,affect){
-    users[i].javavis = true
-    console.log(users)
+
+function cssvis(i, button) {
+    if (users[i].cssvis) {
+        button.innerHTML = "Add"
+        users[i].cssvis = false
+    } else {
+        button.innerHTML = "Remove"
+        users[i].cssvis = true
+    }
 }
-function removeassignCSS(i) {
-    users[i].cssvis = false
-    console.log(users)
-}
-function addassignCSS(i,affect){
-    users[i].cssvis = true
-    console.log(users)
-}
-function removeassignHTML(i) {
-    users[i].htmlvis = false
-    console.log(users)
-}
-function addassignHTML(i,affect){
-    users[i].htmlvis = true
-    console.log(users)
+
+function htmlvis(i, button) {
+    if (users[i].htmlvis) {
+        button.innerHTML = "Add"
+        users[i].htmlvis = false
+    } else {
+        button.innerHTML = "Remove"
+        users[i].htmlvis = true
+    }
 }
 
 function displaynames(i, user) {
-    if(user.utype == "Admin") {
+    if (user.utype == "Admin") {
         return
     }
     let userdiv = document.createElement('div')
+    userdiv.setAttribute("class", "userdiv")
     let userthing
     let userbutton
-    let username = document.createElement("p")
-    username.innerHTML = user.uname
-    userdiv.appendChild(username)
-    if (user.javavis) {
-        userthing = document.createElement('p')
-        userthing.innerHTML = "Javascript"
-        userbutton = document.createElement('button')
-        userbutton.innerHTML = "remove"
-        userbutton.addEventListener("click",removeassignjava(i))
-        userdiv.appendChild(userthing)
-        userdiv.appendChild(userbutton)
-    } else {
-        userthing = document.createElement('p')
-        userthing.innerHTML = "Javascript"
-        userbutton = document.createElement('button')
-        userbutton.innerHTML = "add"
-        userbutton.addEventListener("click",addassignjava(i))
-        userdiv.appendChild(userthing)
-        userdiv.appendChild(userbutton)
-    }
-    if (user.cssvis) {
-        userthing = document.createElement('p')
-        userthing.innerHTML = "CSS"
-        userbutton = document.createElement('button')
-        userbutton.innerHTML  = "remove"
-        userbutton.addEventListener("click",removeassignCSS(i))
-        userdiv.appendChild(userthing)
-        userdiv.appendChild(userbutton)
-    } else {
-        userthing = document.createElement('p')
-        userthing.innerHTML = "CSS"
-        userbutton = document.createElement('button')
-        userbutton.innerHTML= "add"
-        userbutton.addEventListener("click",addassignCSS(i))
-        userdiv.appendChild(userthing)
-        userdiv.appendChild(userbutton)
-    }
-    if (user.htmlvis) {
-        userthing = document.createElement('p')
-        userthing.innerHTML = "HTML"
-        userbutton = document.createElement('button')
-        userbutton.innerHTML = "remove"
-        userbutton.addEventListener("click",removeassignHTML(i))
-        userdiv.appendChild(userthing)
-        userdiv.appendChild(userbutton)
-    } else {
-        userthing = document.createElement('p')
-        userthing.innerHTML = "HTML"
-        userbutton = document.createElement('button')
-        userbutton.innerHTML = "add"
-        userbutton.addEventListener("click",addassignHTML(i))
-        userdiv.appendChild(userthing)
-        userdiv.appendChild(userbutton)
-    }
+
+    let inputname = document.createElement("p")
+    inputname.innerHTML = user.uname
+    userdiv.appendChild(inputname)
+
+    userthing = document.createElement('p')
+    userthing.innerHTML = "Javascript"
+    userbutton = document.createElement('button')
+    userbutton.setAttribute("class", "userbutton")
+    if (user.javavis) { userbutton.innerHTML = "Remove" } else { userbutton.innerHTML = "Add" }
+    userbutton.addEventListener("click", javavis.bind(null, i, userbutton))
+    userdiv.appendChild(userthing)
+    userdiv.appendChild(userbutton)
+
+    userthing = document.createElement('p')
+    userthing.innerHTML = "CSS"
+    userbutton = document.createElement('button')
+    userbutton.setAttribute("class", "userbutton")
+    if (user.cssvis) { userbutton.innerHTML = "Remove" } else { userbutton.innerHTML = "Add" }
+    userbutton.addEventListener("click", cssvis.bind(null, i, userbutton))
+    userdiv.appendChild(userthing)
+    userdiv.appendChild(userbutton)
+
+
+    userthing = document.createElement('p')
+    userthing.innerHTML = "HTML"
+    userbutton = document.createElement('button')
+    userbutton.setAttribute("class", "userbutton")
+    if (user.htmlvis) { userbutton.innerHTML = "Remove" } else { userbutton.innerHTML = "Add" }
+    userbutton.addEventListener("click", htmlvis.bind(null, i, userbutton))
+    userdiv.appendChild(userthing)
+    userdiv.appendChild(userbutton)
+
     document.getElementById("userpage").appendChild(userdiv)
 }
 
@@ -121,6 +113,7 @@ function changewindow() {
 
 function addclass(i, div) {
     let genclass = document.createElement('p')
+    genclass.setAttribute("class", "genclasses")
     genclass.setAttribute('id', 'class' + i)
     genclass.innerHTML = i
     div.appendChild(genclass)
@@ -132,34 +125,44 @@ function addclasses(user) {
     divlist2 = document.createElement("div")
     divlist2.setAttribute("id", "div21")
     divlist2.setAttribute("class", "divhold")
-    if(user.javavis){
+    if (user.javavis) {
         addclass('Javascript', divlist2)
     }
-    if(user.cssvis){
-        addclass('Css', divlist2)
+    if (user.cssvis) {
+        addclass('CSS', divlist2)
     }
-    if(user.htmlvis){
+    if (user.htmlvis) {
         addclass('HTML', divlist2)
     }
-
-
     document.getElementById("courseholder").appendChild(divlist2)
 }
 
 function adduser() {
     unamein = document.getElementById("unamesu")
     pwordin = document.getElementById('pwordsu')
+    pwordconfirm = document.getElementById('confirmpwordsu')
     users = JSON.parse(localStorage.getItem("users"))
     let usertypes = document.getElementsByName("usertype")
+
+    for (let unpos = 0; unpos < users.length; unpos++) {
+        if (users[unpos].uname == unamein.value) {
+            alert("That user name is already taken.")
+            return;
+        }
+    }
+    if (pwordin.value != pwordconfirm.value) {
+        alert("your password does not match the confirmation")
+        return
+    }
 
     for (let v = 0; v < usertypes.length; v++) {
         if (usertypes[v].checked == true) {
             utypein = usertypes[v].value
         }
     }
-
     users.push({ "uname": unamein.value, "pword": pwordin.value, "utype": utypein, "javavis": false, "cssvis": false, "htmlvis": false })
     localStorage.setItem("users", JSON.stringify(users))
+    console.log(JSON.parse(localStorage.getItem("users")))
     window.location.href = "index.html"
 }
 
@@ -175,10 +178,10 @@ function signin() {
             console.log(users[i].uname + " " + i)
             if (users[i].uname == signuser) {
                 if (users[i].pword == signpass) {
-
                     curruser = users[i].uname
                     currpass = users[i].pword
                     currtype = users[i].utype
+                    
                     username.innerHTML = curruser
                     addclasses(users[i])
                     unamein.value = ""
@@ -188,14 +191,19 @@ function signin() {
                     signinbutton.style.visibility = 'hidden'
                     signupbutton.style.visibility = 'hidden'
                     logoutbutton.style.visibility = "visible"
-                    if(users[i].utype == "Admin") {
-                        localStorage.setItem("curruser",JSON.stringify(curruser))
+                    if (users[i].utype == "Admin") {
+                        localStorage.setItem("curruser", JSON.stringify(curruser))
                         window.location.href = "adminpage.html"
+                    } else {
+                        return
                     }
-                }
-                else {
+
+                } else {
+                    alert("The username or password is incorrect")
+                    pwordin.value = ""
                     return
                 }
+
             }
         }
 
@@ -211,7 +219,7 @@ function logout() {
     curruser = ""
     currpass = ""
     username.innerHTML = ""
-    document.getElementById("courseholder").remove()
+    document.getElementById("courseholder").innerHTML = ""
     signinbutton.style.visibility = 'visible'
     signupbutton.style.visibility = 'visible'
     logoutbutton.style.visibility = "hidden"
