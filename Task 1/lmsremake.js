@@ -162,52 +162,42 @@ function adduser() {
     }
     users.push({ "uname": unamein.value, "pword": pwordin.value, "utype": utypein, "javavis": false, "cssvis": false, "htmlvis": false })
     localStorage.setItem("users", JSON.stringify(users))
-    console.log(JSON.parse(localStorage.getItem("users")))
     window.location.href = "index.html"
 }
 
 function signin() {
     users = JSON.parse(localStorage.getItem("users"))
-    console.log(users)
     unamein = document.getElementById("unamesi")
     pwordin = document.getElementById('pwordsi')
     if (window.getComputedStyle(unamein).visibility === 'visible' && window.getComputedStyle(pwordin).visibility === 'visible') {
         let signuser = unamein.value
         let signpass = pwordin.value
         for (let i = 0; i < users.length; i++) {
-            console.log(users[i].uname + " " + i)
-            if (users[i].uname == signuser) {
-                if (users[i].pword == signpass) {
-                    curruser = users[i].uname
-                    currpass = users[i].pword
-                    currtype = users[i].utype
-                    
-                    username.innerHTML = curruser
-                    addclasses(users[i])
-                    unamein.value = ""
-                    pwordin.value = ""
-                    unamein.style.visibility = 'hidden'
-                    pwordin.style.visibility = 'hidden'
-                    signinbutton.style.visibility = 'hidden'
-                    signupbutton.style.visibility = 'hidden'
-                    logoutbutton.style.visibility = "visible"
-                    if (users[i].utype == "Admin") {
-                        localStorage.setItem("curruser", JSON.stringify(curruser))
-                        window.location.href = "adminpage.html"
-                    } else {
-                        return
-                    }
+            if (users[i].uname == signuser && users[i].pword == signpass) {
+                curruser = users[i].uname
+                currpass = users[i].pword
+                currtype = users[i].utype
 
+                username.innerHTML = curruser
+                addclasses(users[i])
+                unamein.value = ""
+                pwordin.value = ""
+                unamein.style.visibility = 'hidden'
+                pwordin.style.visibility = 'hidden'
+                signinbutton.style.visibility = 'hidden'
+                signupbutton.style.visibility = 'hidden'
+                logoutbutton.style.visibility = "visible"
+                if (users[i].utype == "Admin") {
+                    localStorage.setItem("curruser", JSON.stringify(curruser))
+                    window.location.href = "adminpage.html"
                 } else {
-                    alert("The username or password is incorrect")
-                    pwordin.value = ""
                     return
                 }
-
+                return
             }
         }
-
-
+        alert("The username or password is incorrect")
+        pwordin.value = ""
     } else {
         unamein.style.visibility = 'visible'
         pwordin.style.visibility = 'visible'
