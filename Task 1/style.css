@@ -1,17 +1,20 @@
 body {
-    font: 400 20px "Times New Roman";
+    font: 400 25px "Arial";
+    background-color: #e6e6e6;
 }
 
 button{
+    font-size: 17px;
     background-color: transparent;
-    margin: 5px;
-    color: black;
-    border-color: black;
+    margin: 2px;
+    color: white;
+    border: 3px;
+    border-color: white;
+    border-radius: 8px;
 }
 
 #user{
-    height: 20px;
-    margin: 5px;
+    margin: 0px;
 }
 
 #unamesi{
@@ -30,9 +33,10 @@ button{
     visibility: hidden;
 }
 .navbar {
+    color: white;
     display:flex;
     justify-content: space-around;
-    background-color: lightblue;
+    background-color: #0099ff;
     height: 100px
 }
 .companyname {
@@ -42,6 +46,7 @@ button{
     margin: 0px;
 }
 .navdiv{
+
     position: relative;
     display: flex;
     justify-content: left;
@@ -51,31 +56,27 @@ button{
 #div21 {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
-    height: 250px;
-    width: 250px;
-    border: solid;
-    border-width: 5px;
-    border-color: black;
-    background-color: lightblue;
-    border-radius: 30px;
-    position: absolute;
-    left: 50%;
-    top: 35%;
-    margin-left: -130px;
-    margin-bottom: -130px;
     align-items: center;
+    margin: 5px;
+    background-color: #0099ff;
+    color: white;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+iframe {
+    height: 460px;
 }
 #sudiv {
+    color: white;
     display: flex;
     flex-direction: column;
     padding-top: 20px;
     height: 330px;
     width: 250px;
     border: solid;
-    border-width: 5px;
-    border-color: black;
-    background-color: lightblue;
+    border-width: 2px;
+    border-color: white;
+    background-color: #0099ff;
     border-radius: 30px;
     position: absolute;
     left: 50%;
@@ -86,29 +87,40 @@ button{
 }
 .signupelement {
     background-color: transparent;
-    color: black;
+    color:white;
 }
 .sutext {
     border-color: white;
     border-radius: 10px;
+    margin: 5px;
+}
+.radiodiv{
+    margin: 5px;
 }
 .suradio{
     margin: 0px;
 }
 .userdiv {
-    background-color: lightblue;
+    color: white;
+    background-color: #0099ff;
     width: 200px;
     border: solid;
-    border-width: 5px;
+    border-width: 0px;
     border-color: black;
     margin: 20px;
     padding-bottom: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 8px;
 }
 #userpage {
+    background-color: white;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+#courseholder {
+    display: flex;
     justify-content: center;
 }

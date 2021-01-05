@@ -19,6 +19,7 @@ function resetlogout() {
     localStorage.setItem("users", JSON.stringify(users))
     window.location.href = "index.html"
 }
+
 function returntomain() {
     localStorage.setItem("users", JSON.stringify(users))
     window.location.href = "index.html"
@@ -122,19 +123,56 @@ function addclass(i, div) {
 /*"javavis":false,"cssvis":false,"htmlvis":false*/
 
 function addclasses(user) {
-    divlist2 = document.createElement("div")
-    divlist2.setAttribute("id", "div21")
-    divlist2.setAttribute("class", "divhold")
+    let ch = document.getElementById("courseholder")
+
+        /*
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/UB1O30fR-EE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>/iframe>
+        */
     if (user.javavis) {
-        addclass('Javascript', divlist2)
+        let javadiv = document.createElement("div")
+        javadiv.id = "div21"
+        addclass('Javascript', javadiv)
+        let javavid = document.createElement("iframe")
+        javavid.width = 460
+        javavid.heigth = 560
+        javavid.src ="https://www.youtube.com/embed/hdI2bqOjy3c"
+        javavid.frameborder = 0
+        javavid.allow = '"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"'
+        javavid.allowfullscreen
+        javadiv.appendChild(javavid)
+        
+        ch.appendChild(javadiv)
     }
     if (user.cssvis) {
-        addclass('CSS', divlist2)
+        let cssdiv = document.createElement("div")
+        cssdiv.id = "div21"
+        addclass('CSS', cssdiv)
+        let cssvid = document.createElement("iframe")
+        cssvid.width = 460
+        cssvid.heigth = 560
+        cssvid.src ="https://www.youtube.com/embed/yfoY53QXEnI"
+        cssvid.frameborder = 0
+        cssvid.allow = '"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"'
+        cssvid.allowfullscreen
+        cssdiv.appendChild(cssvid)
+        
+        ch.appendChild(cssdiv)
     }
     if (user.htmlvis) {
-        addclass('HTML', divlist2)
+        let htmldiv = document.createElement("div")
+        htmldiv.id = "div21"
+        addclass('HTML', htmldiv)
+        let htmlvid = document.createElement("iframe")
+        htmlvid.width = 460
+        htmlvid.heigth = 560
+        htmlvid.src ="https://www.youtube.com/embed/UB1O30fR-EE"
+        htmlvid.frameborder = 0
+        htmlvid.allow = '"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"'
+        htmlvid.allowfullscreen
+        htmldiv.appendChild(htmlvid)
+        
+        ch.appendChild(htmldiv)
     }
-    document.getElementById("courseholder").appendChild(divlist2)
 }
 
 function adduser() {
@@ -143,6 +181,15 @@ function adduser() {
     pwordconfirm = document.getElementById('confirmpwordsu')
     users = JSON.parse(localStorage.getItem("users"))
     let usertypes = document.getElementsByName("usertype")
+
+    if (unamein.value.trim().length == 0) {
+        alert("please enter a username with charecters")
+        return
+    }
+    if (pwordin.value.trim().length == 0) {
+        alert("please enter a password with charecters")
+        return
+    }
 
     for (let unpos = 0; unpos < users.length; unpos++) {
         if (users[unpos].uname == unamein.value) {
@@ -169,9 +216,18 @@ function signin() {
     users = JSON.parse(localStorage.getItem("users"))
     unamein = document.getElementById("unamesi")
     pwordin = document.getElementById('pwordsi')
+
     if (window.getComputedStyle(unamein).visibility === 'visible' && window.getComputedStyle(pwordin).visibility === 'visible') {
-        let signuser = unamein.value
-        let signpass = pwordin.value
+        if (unamein.value.trim().length == 0) {
+            alert("no username entered")
+            return
+        }
+        if (pwordin.value.trim().length == 0) {
+            alert("no password entered")
+            return
+        }
+        let signuser = unamein.value.trim()
+        let signpass = pwordin.value.trim()
         for (let i = 0; i < users.length; i++) {
             if (users[i].uname == signuser && users[i].pword == signpass) {
                 curruser = users[i].uname

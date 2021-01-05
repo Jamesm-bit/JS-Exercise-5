@@ -10,25 +10,25 @@
 </head>
 
 <body>
-    <div id="sudiv">
-        <p>Please Sign up</p>
-        <input type="text" placeholder="User Name" id="unamesu" class="signupelement sutext">
-        <br>
-        <input type="password" placeholder="Password" id="pwordsu" class="signupelement sutext">
-        <br>
-        <input type="password" placeholder="Confirm Password" id="confirmpwordsu" class="signupelement sutext">
-        <br>
-        <form>
-            <input type="radio" id="adminSU" name="usertype" value="Admin" class="suradio">
-            <label for="adminSU" class="signupelement">Admin</label>
-            <input type="radio" id="studentSU" name="usertype" value="Student" class="suradio">
-            <label for="studentSU" class="signupelement">Student</label>
+    <div>
+        <form id="sudiv">
+            <p>Please Sign up</p>
+            <input type="text" placeholder="User Name" id="unamesu" class="signupelement sutext" required>
+            <input type="password" placeholder="Password" id="pwordsu" class="signupelement sutext" required>
+            <input type="password" placeholder="Confirm Password" id="confirmpwordsu" class="signupelement sutext"
+                required>
+            <div class="radiodiv">
+                <input type="radio" id="adminSU" name="usertype" value="Admin" class="suradio">
+                <label for="adminSU" class="signupelement">Admin</label>
+                <input type="radio" id="studentSU" name="usertype" value="Student" class="suradio" checked>
+                <label for="studentSU" class="signupelement">Student</label>
+            </div>
+            <button type="submit" id="register" onclick="adduser()" class="signupelement sutext">Register</button>
+            <button onclick="returntomain()" class="signupelement sutext">Return to Home</button>
         </form>
-        <br>
-        <button id="register" onclick="adduser()" class="signupelement sutext">Register</button>
-        <button onclick="returntomain()" class="signupelement sutext">Return to Home</button>
+
     </div>
-    
+
     <script src="lmsremake.js"></script>
 </body>
 
