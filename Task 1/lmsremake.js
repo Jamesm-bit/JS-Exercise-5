@@ -1,4 +1,7 @@
-let users = JSON.parse(localStorage.getItem("users"))
+let users = []
+if(localStorage.getItem("users")){
+    users = JSON.parse(localStorage.getItem("users"))
+}
 let courses = ['Javascript', 'CSS', 'HTML']
 let unamein
 let pwordin
@@ -13,7 +16,6 @@ let curruser
 let currpass
 let currtype
 
-console.log(users)
 
 function resetlogout() {
     localStorage.setItem("users", JSON.stringify(users))
@@ -176,10 +178,13 @@ function addclasses(user) {
 }
 
 function adduser() {
+    console.log("it is trying to add user")
     unamein = document.getElementById("unamesu")
     pwordin = document.getElementById('pwordsu')
     pwordconfirm = document.getElementById('confirmpwordsu')
-    users = JSON.parse(localStorage.getItem("users"))
+    if(localStorage.getItem("users")){
+        users = JSON.parse(localStorage.getItem("users"))
+    }
     let usertypes = document.getElementsByName("usertype")
 
     if (unamein.value.trim().length == 0) {
@@ -190,7 +195,8 @@ function adduser() {
         alert("please enter a password with charecters")
         return
     }
-
+    console.log(typeof(users))
+    console.log(users+ " this is users")
     for (let unpos = 0; unpos < users.length; unpos++) {
         if (users[unpos].uname == unamein.value) {
             alert("That user name is already taken.")
@@ -207,7 +213,9 @@ function adduser() {
             utypein = usertypes[v].value
         }
     }
+    console.log(users + " users after push")
     users.push({ "uname": unamein.value, "pword": pwordin.value, "utype": utypein, "javavis": false, "cssvis": false, "htmlvis": false })
+    console.log(users + " users after push")
     localStorage.setItem("users", JSON.stringify(users))
     window.location.href = "index.html"
 }
